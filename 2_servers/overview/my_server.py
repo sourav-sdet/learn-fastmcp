@@ -3,6 +3,8 @@
 
 from fastmcp import FastMCP 
 
+# -------------------------- CREATING A MCP SERVER -------------------------------------------------
+
 # Create a basic server instance
 mcp = FastMCP(name="MyAssistant1")
 
@@ -15,7 +17,7 @@ mcp = FastMCP(name="MyAssistant1")
 #     """,
 # )
 
-# COMPONENTS OF A MCP SERVER
+# -------------------------------- COMPONENTS OF A MCP SERVER ----------------------------------------
 
 # TOOLS
 # Tools are functions that the client can call to perform actions or access external systems
@@ -48,7 +50,7 @@ def analyze_data(data_points: list[float]) -> str:
     formatted_data = ", ".join(str(point) for point in data_points)
     return f"Please analyze these data points: {formatted_data}"
 
-# TAG BASED FILTERING
+# --------------------------------- TAG BASED FILTERING -------------------------------------------
 # Selectively expose components based on configurable include excluse tag sets
 # Helpful to provide different views of server as per environments or users
 # Components can be tagged using the tags parameter
@@ -65,11 +67,23 @@ def internal_tool() -> str:
 # Configure Tag Based Filtering when creating the MCP Server
 
 # Only expose components tagged with public
-mcp_with_include_filter=FastMCP(include_tags={"public"})
+# mcp=FastMCP(include_tags={"public"})
 
 # Hide components marked as internal or admin
-mcp_with_exclude_filter=FastMCP(exclude_tags={"internal", "admin"})
+# mcp=FastMCP(exclude_tags={"internal", "admin"})
 
 # Combine both: show admin tools but hide deprecated ones
-mcp_combine_filter=FastMCP(include_tags={"admin"}, exclude_tags={"deprecated"})
+# mcp=FastMCP(include_tags={"admin"}, exclude_tags={"deprecated"})
+
+
+# -------------------------------- RUNNING THE SERVER -----------------------------------------
+# FastMCP Server need a transport mechanism to communicate with clients
+# Start the server by calling mcp.run() on the FastMCP instance
+if __name__ == "__main__":
+    # This runs the server, defaulting to STDIO transport
+    mcp.run()
+
+    # For HTTP Transport Mode
+    # mcp.run(transport="http", port=8080)
+
 
