@@ -87,3 +87,23 @@ if __name__ == "__main__":
     # mcp.run(transport="http", port=8080)
 
 
+# ---------------------------- CUSTOM ROUTES --------------------------------------------
+#@mcp.custom_route("/health", methods=["GET"])
+#async def health_check(request: Request) -> PlainTextResponse:
+    #return PlainTextResponse("OK")
+
+#if __name__ == "__main__":
+    #mcp.run(transport="http")  # Health check at http://localhost:8000/health
+
+# --------------------------- IMPORTING A SUB SERVER ------------------------------------
+# Compose multiple servers together using import_server(static copy) or mount(live link)
+main = FastMCP("Main Server")
+sub = FastMCP("Sub Server")
+
+@sub.tool()
+def hello():
+    return "Hello"
+
+# Mount Directly
+main.mount(sub, prefix="sub")
+
