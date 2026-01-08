@@ -107,3 +107,28 @@ def hello():
 # Mount Directly
 main.mount(sub, prefix="sub")
 
+# ------------------------- PROXYING SERVERS ----------------------------------------
+# FastMCP can act as a proxy for any mcp server (local or remote) using FastMCP.as_proxy, letting to bridge transports
+# or acting as a front end for existing servers
+# from fastmcp import FastMCP, Client 
+# backend = Client("http://example.com/mcp/sse")
+#proxy = FastMCP.as_proxy(backend, name="Proxy Server")
+
+# ------------------------ CUSTOM TOOL SERIALIZATION -------------------------------
+# By default, FastMCP serializes tool return values to JSON
+# This can be customized using tool_serializer when creating the server
+# import yaml
+# from fastmcp import FastMCP
+
+# Define a custom serializer that formats dictionaries as YAML
+# def yaml_serializer(data):
+#     return yaml.dump(data, sort_keys=False)
+
+# Create a server with the custom serializer
+# mcp = FastMCP(name="MyServer", tool_serializer=yaml_serializer)
+
+# @mcp.tool
+# def get_config():
+#     """Returns configuration in YAML format."""
+#     return {"api_key": "abc123", "debug": True, "rate_limit": 100}
+
