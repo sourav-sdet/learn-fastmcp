@@ -37,6 +37,24 @@ def terminal_tool(command: str) -> str:
     except Exception as e:
         return f"Error executing command: {str(e)}"
 
+@mcp.resource("file:///readme.md")
+async def readme() -> str:
+    """
+    Expose readme.md from the user's project directory
+    
+    Returns:
+        The contents of readme.md as a string
+    """
+    file_path = Path.home() / "Desktop" / "learnfastmcp" / "learnfastmcp" / "shellserver"
+    readme_path = file_path / "readme.md"
+    
+    try:
+        with open(readme_path, "r") as file:
+            content = file.read()
+        return content
+    except Exception as e:
+        return f"Error reading readme.md: {str(e)}"
+
 
 if __name__ == "__main__":
     mcp.run()
