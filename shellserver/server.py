@@ -45,7 +45,7 @@ async def readme() -> str:
     Returns:
         The contents of readme.md as a string
     """
-    file_path = Path.home() / "Desktop" / "learnfastmcp" / "learnfastmcp" / "shellserver"
+    file_path = Path.home() / "Desktop" / "learn-fastmcp" / "learn-fastmcp" / "shellserver"
     readme_path = file_path / "readme.md"
     
     try:
