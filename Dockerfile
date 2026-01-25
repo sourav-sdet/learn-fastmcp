@@ -25,7 +25,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-install-project
 
 # Copy the application code into the container
-COPY server.py .
+COPY shellserver/. .
 # If you decided to vendor the 'mcp' package (copying it into shellserver), uncomment the next line:
 # COPY ./mcp ./mcp
 
@@ -36,4 +36,4 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
 
 # Define the command to run the application using 'uv run'
-CMD ["uv", "run", "server.py"]
+CMD ["uv", "run", "shellserver/server.py"]

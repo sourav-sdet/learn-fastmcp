@@ -1,1 +1,0 @@
-readme.md that is exposed as a resource to mcp client
