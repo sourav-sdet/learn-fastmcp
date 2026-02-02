@@ -11,7 +11,11 @@ math_client = Client("/Users/ruso/Desktop/learn-fastmcp/learn-fastmcp/langchain-
 
 
 async def main():
+
+    # Connection established here
     async with math_client:
+
+        print(f"Connected: {math_client.is_connected()}")
 
         # Initialization already happened automatically
         print(f"Server: {math_client.initialize_result.serverInfo.name}")
@@ -26,8 +30,12 @@ async def main():
         mcp_tools = await math_client.list_tools()
         print(f"Tools: {mcp_tools}")
 
-        # Execute Operations
-        # result = await math_client.call_tool()
+        # Execute Tools
+        result = await math_client.call_tool("add", {"a": 1, "b": 2})
+        print(f"Executing Tool 'add' with result: {result}")
+
+        # Connection closed automatically here
+        print(f"Connected: {math_client.is_connected()}")
 
 if __name__ == "__main__":
     asyncio.run(main())
