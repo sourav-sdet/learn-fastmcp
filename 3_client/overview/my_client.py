@@ -20,7 +20,6 @@ config = {
         "assistant": {"command": "python", "args": ["./assistant_server.py"]}
     }
 }
-
 client_config = Client(config)
 
 
