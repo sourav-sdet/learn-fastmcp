@@ -55,6 +55,18 @@ async def mcpreadme() -> str:
     except Exception as e:
         return f"Error reading mcpreadme.md: {str(e)}"
 
+@mcp.prompt
+def get_research_prompt(topic: str) -> str:
+    """
+    Create a prompt asking for research on a given topic.
+    
+    Args:
+        topic: The topic to research
+        
+    Returns:
+        A prompt asking for research on the given topic
+    """
+    return f"Research the following topic: {topic}"
 
 if __name__ == "__main__":
     mcp.run()
