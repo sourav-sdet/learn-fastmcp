@@ -56,17 +56,17 @@ async def mcpreadme() -> str:
         return f"Error reading mcpreadme.md: {str(e)}"
 
 @mcp.prompt
-def get_research_prompt(topic: str) -> str:
+def get_shell_prompt(command: str) -> str:
     """
-    Create a prompt asking for research on a given topic.
+    Create a prompt asking for a shell command to execute.
     
     Args:
-        topic: The topic to research
+        command: The shell command to execute
         
     Returns:
-        A prompt asking for research on the given topic
+        A prompt asking for a shell command to execute
     """
-    return f"Research the following topic: {topic}"
+    return f"Execute the following shell command: {command}"
 
 if __name__ == "__main__":
     mcp.run()
