@@ -143,11 +143,11 @@ async def get_pokemon_by_type(type_name: str) -> dict:
 
 if __name__ == "__main__":
     """Run the MCP server."""
-    print("🔥 Starting Mini Pokédex Lite MCP Server (Async)...")
-    print("📡 Server running on stdio - connect with your MCP client!")
-    print("🎯 Try these resources:")
-    print("   • poke://starters")
-    print("   • poke://pokemon/1")
-    print("   • poke://pokemon/pikachu")
-    print("   • poke://types/fire")
+    print(" Starting Mini Pokédex Lite MCP Server (Async)...")
+    print(" Server running on stdio - connect with your MCP client!")
+    print(" Try these resources:")
+    print(" poke://starters")
+    print(" poke://pokemon/1")
+    print(" poke://pokemon/pikachu")
+    print(" poke://types/fire")
     mcp.run(transport="http")
